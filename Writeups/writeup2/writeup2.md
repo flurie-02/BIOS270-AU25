@@ -79,7 +79,7 @@ and to Stanford GitLab through Farmshare:
 ![Pushed to Stanford GitLab](<images/tag and push to GitLab.png>)
 
 3. I was then able to pull my doecker image from Stanford GitLab into farmshare:
-![Pull Docker image](<image/pull in docker image.png>)
+![Pull Docker image](<images/pull in docker image.png>)
 
 I then wrote a Python script to print "Hello World" and tried to run it through my container, but got a "no file or directory" error:
 ![Failed to run](<images/wrote file and attempted to run.png>)
