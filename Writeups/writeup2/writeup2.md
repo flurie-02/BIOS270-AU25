@@ -20,7 +20,7 @@ I found and ran both test scripts (the pyton one did not produce a command-line 
 ![R example output](images/r_example_plot.png)
 
 I successfully installed `rpy2` and exported the new environment:
-![Updated environment](<iimages/nstall rpy2 and export new environment.png>)
+![Updated environment](<images/nstall rpy2 and export new environment.png>)
 
 Compared to the original environment, the main new change I notice from the above is that rpy2 is now installed!
 ![Updated and original environments](<images/updated vs original environment.png>)
