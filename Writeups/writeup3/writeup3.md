@@ -30,13 +30,13 @@ I wasn't able to query the databse because I could not generate it in Part #1. H
 ```python
 def get_all_record_ids(self):
     #TODO: write the query to get all unique record_id from the gff table
-    query = SELECT DISTINCT record_id FROM self.db_path
+    query = f"SELECT DISTINCT record_id FROM '{self.db_path}'"
     df = self.query(query)
     return df["record_id"].dropna().tolist()
 
 def get_protein_ids_from_record_id(self, record_id):
     #TODO: write function to return list of protein_ids for a given record_id
-    query = SELECT DISTINCT protein_ids FROM self.db_path WHERE gff(record_id) #I am not sure if this is the correct way to use the passed record_id in this query...
+    query = f"SELECT DISTINCT protein_ids FROM '{self.db_path}' WHERE record_id = '{record_id}'"
     df = self.query(query)
     return df["protein_id"].dropna().tolist()
 ```
@@ -48,7 +48,7 @@ The CHUNK_SIZE variable breaks down the SQL file into smaller chunks of rows tha
 I couldn't actually run this because I couldn't build the dataset, but I would create a query on BigQuery by opening my BIOS-270 project folder and clicking on "SQL Query" to create 2x new queries!
 
 ## 4. HDF5 Data
-The `chunk_size = 1000` line breaks the file down into columns of length 1000 rows, with 164 total columns (specified by `n_features`). The chunk size is therefore: 1000x164. This makes sense for biological use cases like single-cell RNA sequencing, where we would want to look at the expression of specific genes (e.g., 164) across a number of samples in parallel (e.g., 1000). HDF5 files chunked as columns in this way are also greatly accelerated, as we'd discussed in class! Also, chunking will prevent overloading the RAM of our server / local machine, while allowing us to investigate a large number of features in parallel.
+The `chunk_size = 1000` line breaks the file down into columns of length 1000 rows, with 164 total columns (specified by `n_features`). The chunk size is therefore: 1000x164. This makes sense for biological use cases like single-cell RNA sequencing, where we would want to look at the expression of specific genes (e.g., 164) across a number of samples in parallel (e.g., 1000). HDF5 files chunked as columns in this way are also greatly accelerated, as we'd discussed in class! Also, chunking will prevent overloading the RAM of our server / local machine, while allowing us to investigate a large number of features in parallel. Also, Khoa told me that the average bacterial genome size is around ~4000 proteins, so chunking in this way would allow for 25% of the genome's proteins to be accessed at any time, reducing latency while also minimizing the amount of working memory that would be required.
 
 ## 5. Practice – Combining SQL and HDF5
 I skipped this part because I was not able to make the SQL database earlier!
