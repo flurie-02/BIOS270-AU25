@@ -78,6 +78,7 @@ workflow {
         log.error "Neither index nor transcriptome file path provided. Pipeline terminated early."
     }
 }
+"""
 ```
 
 ## Running Nextdlow pipeline
