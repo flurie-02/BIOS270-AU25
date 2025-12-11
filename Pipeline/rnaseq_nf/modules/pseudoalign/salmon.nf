@@ -17,3 +17,15 @@ process SALMON {
                    -o salmon_outs
       """
 }
+process SALMON_INDEX {
+    input:
+      path transcriptome
+
+    output:
+      path ('salmon_index_outs/quant.sf')
+
+    script:
+    """
+    salmon index -t "${transcriptome.fa}"
+                -i "${salmon_outs}"
+    """

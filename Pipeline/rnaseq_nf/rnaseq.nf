@@ -24,9 +24,12 @@ samples_ch = samplesheet_ch.splitCsv(header:true).map { row ->
 workflow {
     FASTQC(samples_ch)
     trimmed_ch = TRIMGALORE(samples_ch)
-    quant_ch   = SALMON(trimmed_ch, params.index)
-
-    if( params.run_deseq ) {
+    
+// I could not figure our the specific syntax of how to do this, but here is my pseudo-code instead:
+""" if( params.yaml contains index ) {
+        quant_ch   = SALMON(trimmed_ch, params.index)
+            
+        if( params.run_deseq ) {
         // Collect all Salmon outputs into a map {sample: quant_path}
 
         quant_paths_ch = quant_ch
@@ -37,6 +40,28 @@ workflow {
                 seed: "sample,quant_path"  // This adds the header as the first line
             )
         DESEQ2(quant_paths_ch, samplesheet_ch)
+        }
+    }
+
+    else if ( params.yaml contains transcriptome ) {
+        index_path = SALMON_INDEX(transcriptome)         // run SALMON_INDEX to generate the index from the transcriptome path and store the directory output
+     
+        quant_ch   = SALMON(trimmed_ch, index_path)    // access the newly-generated index file, and run SALMON
+        
+        quant_paths_ch = quant_ch
+            .map { sample, quant, cond -> "${sample},${quant}" }
+            .collectFile(
+                name: "quant_paths.csv", 
+                newLine: true, 
+                seed: "sample,quant_path"  // This adds the header as the first line
+            )
+        DESEQ2(quant_paths_ch, samplesheet_ch)
+        }
+    }
+
+    else:
+        print("Either an index file or transcriptome file path must be provided to run this pipeline. Pipeline terminated early and error added to log directory.")
+        log.error "Neither index nor transcriptome file path provided. Pipeline terminated early."
     }
 }
 workflow.onComplete {
