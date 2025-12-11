@@ -101,8 +101,10 @@ run_deseq: true
 ```
 
 3. I tried running the provided code in this step to make sure the scripts were executable, and got this error message I didn't really understand, as my `bin` directory very much exists...
+![Executable error](<images/Executable fail error.png>)
 
 4. I then tried to run the `nextflow` pipeline, but got another error I didn't understand. I wonder if I installed Nextflow in the wrong directoy? Eiether way, because I was unsure of the syntax / did only attempted to make the modifications to the pipeline outlined in this Write-up, I think the pipline would have failed anyways.
+![Nextflow run error](<images/Nextflow run error.png>)
 
 ---
 
