@@ -69,14 +69,15 @@
 - **Algorithms and methods**  
   After building my SQL database (see preprocesing, above), my pipeline would be the following:
 
-  1. To identify "core" proteins conserved across fungal species (Aim 1):
+1. To identify "core" proteins conserved across fungal species (Aim 1):
     - Query the database and group proteins by their KOG annotation.
     - For proteins with low-quality annotations, or no KOG annotations, I would use a layered approach as discussed with Khoa:
         - I would first try to compare the Pfam domains of the proteins, to see if the poorly-annotated protein could be matched to one that is well-annotated  based on functionality instead of sequence.
         - If this fails, then I would move on to an embedding-based comparison to see if remote homologs could be matched this way.
     - After identifying the KOGs conserved across 90% of species in my database and make visualizations to present this data.
   
-  2. To perform deeper analysis of specific nutrient assimilation pathways (Aim 2):
+
+2. To perform deeper analysis of specific nutrient assimilation pathways (Aim 2):
     - Query the database to select the 100 white-rot fungi species I want to look at (I would probably need a list of species to query the database with)
     - Using the proteins identified in [this paper](https://www.nature.com/articles/s42003-025-07640-9) and other relevant lignin degradation literature, I will aggregate their sequences and annotations
     - I will then query the white-rot fungi species subset of my database to search for homologs using the Pfam, KEGG, and CAZyme annotations in my database. 
