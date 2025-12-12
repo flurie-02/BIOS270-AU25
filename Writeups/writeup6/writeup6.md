@@ -54,9 +54,8 @@
   - The key tools I will need for my analysis are:
     - the entire Biopython package! --> for handling .fasta and .gff files easily [Source](https://github.com/biopython/biopython/blob/master/README.rst)
     - NumPy --> dependency for Biopython
-    - rclone --> for interfacing with Google Cloud Storage / BiqQuery
-    - MMSeqs2 --> for rapidly searching and clustering proteins [Source](https://github.com/soedinglab/MMseqs2)
-    - ESM-2 --> for generating protein embeddings [Source](https://github.com/facebookresearch/esm?tab=readme-ov-file)
+    - rclone --> for interfacing with Google Cloud Storage / BiqQuery [Source](https://rclone.org/)
+    - Foldseek --> for generating protein embeddings and clustering them [Source](https://github.com/steineggerlab/foldseek), suggested by Khoa
     - seqhub --> another way of deteting remote homolgs using .fasta files, as suggested by Khoa
     - matplotlib / seaborn --> for any visualizations I might want to make!
 
