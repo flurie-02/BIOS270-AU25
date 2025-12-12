@@ -104,7 +104,7 @@
   N/A (this is an unsupervized task).
 
 - **Evaluation metrics**  
-  Because this is a clustering task, the specific evaluation metrics I would need to use are the **Silhouette Score** or **Davies-Bouldin Index** [Source](https://www.geeksforgeeks.org/machine-learning/clustering-metrics/)[Source](https://scikit-learn.org/stable/modules/clustering.html#davies-bouldin-index). The silhouette score essentially measures how dense and well-separated clusters are, while the Davies-Bouldin index measures how close clusters to each other relative to their sizes. Both of these metrics evaluate how well the clustering algorithm has worked by assessing a combination of how tightly the data is clustered, and whether clusters are overlapping or well-separated. These metrics would give me an indication whether my clustering has been successful, or if my model is overfitting the data!
+  Because this is a clustering task, the specific evaluation metrics I would need to use are the **Silhouette Score** or **Davies-Bouldin Index** [Source](https://www.geeksforgeeks.org/machine-learning/clustering-metrics/), [Source](https://scikit-learn.org/stable/modules/clustering.html#davies-bouldin-index). The silhouette score essentially measures how dense and well-separated clusters are, while the Davies-Bouldin index measures how close clusters to each other relative to their sizes. Both of these metrics evaluate how well the clustering algorithm has worked by assessing a combination of how tightly the data is clustered, and whether clusters are overlapping or well-separated. These metrics would give me an indication whether my clustering has been successful, or if my model is overfitting the data!
 
 ---
 ## Acknowledgement
